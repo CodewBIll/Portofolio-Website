@@ -1,6 +1,6 @@
 @font-face {
   font-family: uhuy;
-  src: url('/asset/coolvetica-rg.otf') format('opentype');
+  src: url('/asset/coolvetica-rg.otf');
 }
 
 * {
