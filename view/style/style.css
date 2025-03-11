@@ -1,6 +1,6 @@
 @font-face {
   font-family: uhuy;
-  src: url('/asset/coolvetica-rg.woff');
+  src: url('/asset/coolvetica-rg.otf');
 }
 
 * {
@@ -14,7 +14,7 @@ body {
     linear-gradient(to bottom, #ffffff19 1px, transparent 1px);
   background-size: 70px 70px;
   background-color: #0039C7;
-  font-family: uhuy;
+  font-family: sans-serif;
   background-attachment: fixed;
 }
 
