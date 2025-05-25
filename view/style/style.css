@@ -785,7 +785,7 @@ footer {
     }
 }
 
-@media (max-width: 343px) {
+@media (min-width: 343px) {
     .btn {
         margin: 10px 0;
     }
