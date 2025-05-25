@@ -785,9 +785,3 @@ footer {
         font-size: 1.8rem;
     }
 }
-
-@media (min-width: 343px) {
-    .btn {
-        margin: 10px 0;
-    }
-}
