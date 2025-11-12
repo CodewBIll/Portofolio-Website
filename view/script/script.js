@@ -138,7 +138,6 @@ const cursor = document.querySelector('.cursor');
            observer.observe(element);
        });
 
-       // Project Card Hover Effect Enhancement
        const projectCards = document.querySelectorAll('.project-card');
        
        projectCards.forEach(card => {
@@ -182,7 +181,6 @@ const cursor = document.querySelector('.cursor');
                i++;
                setTimeout(typeWriter, typingSpeed);
            } else {
-               // Start again after a delay
                setTimeout(() => {
                    i = 0;
                    typewriterElement.textContent = '';
@@ -191,10 +189,8 @@ const cursor = document.querySelector('.cursor');
            }
        }
        
-       // Start typing after a short delay
        setTimeout(typeWriter, 1000);
 
-       // Particle Effect for Hero Section
        function createParticles() {
            const heroSection = document.querySelector('.hero');
            const particleCount = 50;
@@ -203,7 +199,6 @@ const cursor = document.querySelector('.cursor');
                const particle = document.createElement('div');
                particle.classList.add('particle');
                
-               // Random properties
                const size = Math.random() * 5 + 2;
                const posX = Math.random() * 100;
                const posY = Math.random() * 100;
@@ -223,10 +218,8 @@ const cursor = document.querySelector('.cursor');
            }
        }
 
-       // Add particles after page loads
        window.addEventListener('load', createParticles);
 
-       // Add CSS for particles
        const style = document.createElement('style');
        style.textContent = `
            .particle {
@@ -253,3 +246,47 @@ const cursor = document.querySelector('.cursor');
 window.addEventListener("load", function () {
     body.classList.add("saturate")
 })   
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formStatus');
+    const submitButton = document.getElementById('submitButton');
+
+    if (!form) return; 
+
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault(); 
+        
+        submitButton.disabled = true;
+        submitButton.textContent = "Mengirim...";
+        statusDiv.innerHTML = ""; 
+
+        const formAction = form.action; 
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(formAction, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            if (response.ok) {
+                statusDiv.innerHTML = 
+                    '<p style="color: green; font-weight: bold; text-align: center;">✅ Pesan Anda telah Terkirim! Saya akan segera menghubungi Anda.</p>';
+                form.reset(); 
+            } else {
+                statusDiv.innerHTML = 
+                    '<p style="color: red; text-align: center;">⚠️ Maaf, gagal mengirim pesan. Silakan coba lagi nanti.</p>';
+            }
+        } catch (error) {
+            console.error('Network Error:', error);
+            statusDiv.innerHTML = 
+                '<p style="color: red; text-align: center;">⚠️ Error koneksi. Silakan periksa jaringan Anda atau hubungi saya via email.</p>';
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Send Message";
+        }
+    });
+});
